@@ -25,9 +25,14 @@ export default ({
   ...eslintOptions
 }: Options = {}): Plugin => ({
   name: "eslint",
-  setup: ({ onLoad, onEnd }) => {
+  setup: ({ onStart, onLoad, onEnd }) => {
     const eslint = new ESLint(eslintOptions);
     const filesToLint: OnLoadArgs["path"][] = [];
+
+    onStart(() => {
+      // Clear list of files from previous run in watch mode
+      filesToLint.splice(0);
+    });
 
     onLoad({ filter }, ({ path }) => {
       if (!path.includes("node_modules")) {
