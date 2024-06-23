@@ -1,5 +1,9 @@
 # changelog
 
+## v0.3.15
+_2024-06-23_
+* fix duplicate linting in esbuild watch mode
+
 ## v0.3.12
 _2024-03-15_
 

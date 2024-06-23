@@ -1,12 +1,5 @@
 # `esbuild-plugin-eslint`
 
-[![latest version on npm](https://img.shields.io/npm/v/esbuild-plugin-eslint)](https://www.npmjs.com/package/esbuild-plugin-eslint)
-[![npm downloads a week](https://img.shields.io/npm/dw/esbuild-plugin-eslint)](https://www.npmjs.com/package/esbuild-plugin-eslint)
-[![required node version](https://img.shields.io/node/v/esbuild-plugin-eslint)](https://github.com/nodejs/Release)
-[![esbuild peer dep](https://img.shields.io/npm/dependency-version/esbuild-plugin-eslint/peer/esbuild?label=esbuild%20peer%20dep)](https://github.com/evanw/esbuild)
-[![eslint peer dep](https://img.shields.io/npm/dependency-version/esbuild-plugin-eslint/peer/eslint?label=eslint%20peer%20dep)](https://github.com/eslint/eslint)
-[![package license](https://img.shields.io/npm/l/esbuild-plugin-eslint)](license)
-
 > Lint your [`esbuild`](https://github.com/evanw/esbuild) bundles with [`eslint`](https://github.com/eslint/eslint). 🧐
 
 Nicely integrates the most recent version of [`eslint`](https://github.com/eslint/eslint) into an [`esbuild`](https://github.com/evanw/esbuild) plugin.
@@ -50,7 +43,7 @@ Tells esbuild what files to look at. Only files matching this pattern will be ha
 
 Type: `boolean`<br>
 Default: `false`<br>
-Used by: [The plugin itself](https://github.com/robinloeffel/esbuild-plugin-eslint)<br>
+Used by: [The plugin itself](https://github.com/thedanbob/esbuild-plugin-eslint)<br>
 
 Instructs the plugin to forward errors found by ESLint to esbuild and throw an error.
 
@@ -58,7 +51,7 @@ Instructs the plugin to forward errors found by ESLint to esbuild and throw an e
 
 Type: `boolean`<br>
 Default: `false`<br>
-Used by: [The plugin itself](https://github.com/robinloeffel/esbuild-plugin-eslint)<br>
+Used by: [The plugin itself](https://github.com/thedanbob/esbuild-plugin-eslint)<br>
 
 Instructs the plugin to forward warnings found by ESLint to esbuild and throw an error.
 
