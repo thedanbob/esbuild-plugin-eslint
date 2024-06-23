@@ -25,8 +25,9 @@ export default ({
   ...eslintOptions
 }: Options = {}): Plugin => ({
   name: "eslint",
-  setup: ({ onStart, onLoad, onEnd }) => {
+  setup: async ({ onStart, onLoad, onEnd }) => {
     const eslint = new ESLint(eslintOptions);
+    const formatter = await eslint.loadFormatter();
     const filesToLint: OnLoadArgs["path"][] = [];
 
     onStart(() => {
@@ -44,7 +45,6 @@ export default ({
 
     onEnd(async() => {
       const results = await eslint.lintFiles(filesToLint);
-      const formatter = await eslint.loadFormatter();
       const output = await formatter.format(results);
 
       const warnings = results.reduce((count, result) => count + result.warningCount, 0);
