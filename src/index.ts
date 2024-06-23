@@ -35,12 +35,10 @@ export default ({
       filesToLint.splice(0);
     });
 
-    onLoad({ filter }, ({ path }) => {
+    onLoad({ filter }, ({ path }): undefined => {
       if (!path.includes("node_modules")) {
         filesToLint.push(path);
       }
-
-      return null;
     });
 
     onEnd(async() => {
