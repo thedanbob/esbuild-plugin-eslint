@@ -56,12 +56,13 @@ export default ({
         console.log(output);
       }
 
+      const errorsList = [];
+      throwOnWarning && warnings > 0 && errorsList.push({ text: `${warnings} warnings were found by eslint!` });
+      throwOnError && errors > 0 && errorsList.push({ text: `${errors} errors were found by eslint!` });
+
       return {
-        ...throwOnWarning && warnings > 0 && {
-          errors: [{ text: `${warnings} warnings were found by eslint!` }]
-        },
-        ...throwOnError && errors > 0 && {
-          errors: [{ text: `${errors} errors were found by eslint!` }]
+        ...errorsList.length > 0 && {
+          errors: errorsList
         }
       };
     });
