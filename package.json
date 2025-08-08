@@ -38,23 +38,21 @@
     "prepack": "npm run clean && npm run build",
     "start": "npm run clean && npm run build && npm run watch",
     "watch": "concurrently npm:watch:*",
-    "watch:build": "chokidar 'source/**/*' -c 'npm run build' --initial",
+    "watch:build": "chokidar 'src/**/*' -c 'npm run build' --initial",
     "watch:test": "chokidar 'test/**/*' -c 'node test/esbuild.js' --initial"
   },
   "devDependencies": {
     "@tsconfig/strictest": "^2.0.3",
-    "@types/eslint": "^8.56.5",
     "chokidar-cli": "^3.0.0",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.2.0",
     "esbuild": ">=0.20",
-    "eslint": "^8 || ^9",
-    "eslint-config-sweet": "^19.0.2",
-    "eslint-define-config": "^2.1.0",
-    "typescript": "^5.4.2"
+    "eslint": "^9",
+    "eslint-config-sweet": "^28.0.0",
+    "typescript": "^5.9.2"
   },
   "peerDependencies": {
     "esbuild": ">=0.20",
-    "eslint": "^8 || ^9"
+    "eslint": "^9"
   },
   "engines": {
     "node": ">=18"
