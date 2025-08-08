@@ -5,7 +5,10 @@ sweet.push({
   files: ["./src/index.ts"],
   rules: {
     "no-console": "off",
+    "max-statements": "off",
+    "max-lines-per-function": "off",
     "unicorn/no-null": "off",
+    "unicorn/no-anonymous-default-export": "off",
     "@stylistic/lines-around-comment": [
       "error",
       {
@@ -13,6 +16,12 @@ sweet.push({
         allowInterfaceStart: true,
         allowModuleStart: true,
         allowTypeStart: true
+      }
+    ],
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      {
+        allowNumber: true
       }
     ]
   }
@@ -40,6 +49,6 @@ sweet.push({
       document: "readable"
     }
   }
-})
+});
 
 export default defineConfig(sweet);

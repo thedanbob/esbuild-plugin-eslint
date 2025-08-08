@@ -25,7 +25,7 @@ export default ({
   ...eslintOptions
 }: Options = {}): Plugin => ({
   name: "eslint",
-  setup: async ({ onStart, onLoad, onEnd }) => {
+  setup: async ({ onStart, onLoad, onEnd }) => { // eslint-disable-line @typescript-eslint/unbound-method
     const eslint = new ESLint(eslintOptions);
     const formatter = await eslint.loadFormatter();
     const filesToLint: OnLoadArgs["path"][] = [];
@@ -41,12 +41,9 @@ export default ({
       }
     });
 
-    onEnd(async() => {
+    onEnd(async () => {
       const results = await eslint.lintFiles(filesToLint);
       const output = await formatter.format(results);
-
-      const warnings = results.reduce((count, result) => count + result.warningCount, 0);
-      const errors = results.reduce((count, result) => count + result.errorCount, 0);
 
       if (eslintOptions.fix) {
         await ESLint.outputFixes(results);
@@ -56,15 +53,19 @@ export default ({
         console.log(output);
       }
 
-      const errorsList = [];
-      throwOnWarning && warnings > 0 && errorsList.push({ text: `${warnings} warnings were found by eslint!` });
-      throwOnError && errors > 0 && errorsList.push({ text: `${errors} errors were found by eslint!` });
+      const errors = [];
+      const warningCount = results.reduce((sum, result) => sum + result.warningCount, 0);
+      const errorCount = results.reduce((sum, result) => sum + result.errorCount, 0);
 
-      return {
-        ...errorsList.length > 0 && {
-          errors: errorsList
-        }
-      };
+      if (throwOnWarning && warningCount > 0) {
+        errors.push({ text: `${warningCount} warnings were found by eslint!` });
+      }
+
+      if (throwOnError && errorCount > 0) {
+        errors.push({ text: `${errorCount} errors were found by eslint!` });
+      }
+
+      return errors.length > 0 ? { errors } : {};
     });
   }
 });
