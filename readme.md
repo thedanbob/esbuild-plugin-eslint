@@ -73,6 +73,10 @@ Reference: [eslint.org (`options.useEslintrc`)](https://eslint.org/docs/latest/d
 
 If set to `false`, ESLint will not respect any configuration files it finds.
 
+## Attribution
+
+Forked from the [original plugin](https://github.com/robinloeffel/esbuild-plugin-eslint) by Robin Löffel.
+
 ## License
 
 MIT
