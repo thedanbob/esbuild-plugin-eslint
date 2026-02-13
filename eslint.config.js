@@ -1,54 +1,44 @@
-import { defineConfig } from "eslint/config";
-import sweet from "eslint-config-sweet";
+import js from "@eslint/js"
+import tseslint from "typescript-eslint"
 
-sweet.push({
-  files: ["./src/index.ts"],
-  rules: {
-    "no-console": "off",
-    "max-statements": "off",
-    "max-lines-per-function": "off",
-    "unicorn/no-null": "off",
-    "unicorn/no-anonymous-default-export": "off",
-    "@stylistic/lines-around-comment": [
-      "error",
-      {
-        allowEnumStart: true,
-        allowInterfaceStart: true,
-        allowModuleStart: true,
-        allowTypeStart: true
-      }
-    ],
-    "@typescript-eslint/restrict-template-expressions": [
-      "error",
-      {
-        allowNumber: true
-      }
-    ]
-  }
-}, {
-  files: ["./test/cases/warnings.js"],
-  rules: {
-    "func-style": "warn",
-    "no-unused-vars": "warn",
-    "no-empty-function": "warn",
-    "@stylistic/curly-newline": [
-      "warn",
-      "always"
-    ]
+export default [
+  js.configs.recommended,
+  {
+    ignores: ["dist", "node_modules"],
   },
-  languageOptions: {
-    globals: {
-      document: "readable"
+  {
+    files: ["./src/*"],
+    extends: [...tseslint.configs.recommended],
+    rules: {
+      indent: ["error", 2],
+      "linebreak-style": ["error", "unix"],
+      quotes: ["warn", "double", { "avoidEscape": true }],
+      semi: ["warn", "never"],
+    },
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module"
+    },
+  },
+  {
+    files: ["./test/cases/warnings.js"],
+    rules: {
+      "func-style": "warn",
+      "no-unused-vars": "warn",
+      "no-empty-function": "warn",
+    },
+    languageOptions: {
+      globals: {
+        document: "readable"
+      }
+    }
+  },
+  {
+    files: ["./test/cases/nothing.js"],
+    languageOptions: {
+      globals: {
+        document: "readable"
+      }
     }
   }
-},
-{
-  files: ["./test/cases/nothing.js"],
-  languageOptions: {
-    globals: {
-      document: "readable"
-    }
-  }
-});
-
-export default defineConfig(sweet);
+]

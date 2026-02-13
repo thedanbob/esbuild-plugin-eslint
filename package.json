@@ -42,13 +42,14 @@
     "watch:test": "chokidar 'test/**/*' -c 'node test/esbuild.js' --initial"
   },
   "devDependencies": {
-    "@tsconfig/strictest": "^2.0.3",
+    "@eslint/js": "^9",
+    "@tsconfig/strictest": "^2.0.8",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^9.2.0",
     "esbuild": ">=0.20",
-    "eslint": "^9 || ^10",
-    "eslint-config-sweet": "^31.0.0",
-    "typescript": "^5.9.2"
+    "eslint": "^9",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0"
   },
   "peerDependencies": {
     "esbuild": ">=0.20",

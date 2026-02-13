@@ -1,11 +1,9 @@
 import { build } from "esbuild";
 import eslint from "../dist/index.mjs";
 
-const absolute = relative => new URL(relative, import.meta.url).pathname;
-
 await build({
   entryPoints: [
-    absolute("./cases")
+    "./test/cases"
   ],
   plugins: [
     eslint()
