@@ -28,7 +28,7 @@ node esbuild.config.js
 
 ## Config
 
-This plugin respects your [ESLint configuration](https://eslint.org/docs/user-guide/configuring) by default. It takes the same options as the [ESLint constructor](https://eslint.org/docs/latest/developer-guide/nodejs-api#parameters) with the addition of `filter`, `throwOnError`, and `throwOnWarning`. The most important options are:
+This plugin respects your [ESLint configuration](https://eslint.org/docs/user-guide/configuring) by default. Available config options are:
 
 ### `filter`
 
@@ -55,14 +55,14 @@ Used by: The plugin itself
 
 Instructs the plugin to forward warnings found by ESLint to esbuild and throw an error.
 
-### `fix`
+### `eslint`
 
-Type: `boolean`<br>
-Default: `false`<br>
+Type: `ESLint.Options`<br>
+Default: `{}`<br>
 Used by: [`eslint`](https://github.com/eslint/eslint)<br>
-Reference: [eslint.org (`options.fix`)](https://eslint.org/docs/latest/developer-guide/nodejs-api#parameters)<br>
+Reference: [eslint.org](https://eslint.org/docs/latest/developer-guide/nodejs-api#parameters)<br>
 
-Enables the autofix feature of ESLint.
+Options object passed to the ESLint constructor.
 
 ## Attribution
 

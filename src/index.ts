@@ -1,22 +1,18 @@
 import type { OnLoadArgs, Plugin } from "esbuild"
 import { ESLint } from "eslint"
 
-interface Options extends ESLint.Options {
-  // Tells esbuild what files to look at; only matches will be processed
+interface Options {
   filter?: RegExp
-
-  // Controls whether or not to forward an error to esbuild when eslint reports any warnings
   throwOnWarning?: boolean
-
-  // Controls whether or not to forward an error to esbuild when eslint reports any errors
   throwOnError?: boolean
+  eslint?: ESLint.Options
 }
 
 export default ({
   filter = /\.(?:jsx?|tsx?|mts|cts|mjs|cjs|vue|svelte)$/,
   throwOnWarning = false,
   throwOnError = false,
-  ...eslintOptions
+  eslint: eslintOptions = {}
 }: Options = {}): Plugin => ({
   name: "eslint",
   setup: async ({ onStart, onLoad, onEnd }) => {
