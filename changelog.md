@@ -1,5 +1,13 @@
 # changelog
 
+## v1.0.0
+_2026-02-16_
+* Move eslint options to dedicated key
+
+## v0.4.0
+_2026-02-09_
+* Support ESLint 10
+
 ## v0.3.15
 _2024-06-23_
 * fix duplicate linting in esbuild watch mode
